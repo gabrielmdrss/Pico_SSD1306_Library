@@ -1,7 +1,5 @@
 # SSD1306 Library for Raspberry Pi Pico W
 
-![SSD1306 OLED Display](https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/SSD1306.svg/120px-SSD1306.svg.png)
-
 ## Introduction
 This library is designed to simplify the use of the **SSD1306 OLED display** with the **Raspberry Pi Pico W**. The SSD1306 is a popular **monochrome OLED display**, widely used in electronics projects due to its high resolution and low power consumption. This library provides an easy-to-use interface for:
 - Display initialization
@@ -44,12 +42,38 @@ The primary goal of this library is to **streamline** the process of interfacing
 - `ssd1306_Reset()`: Resets the display (for I2C, this function has no effect).
 
 ## Getting Started
+
+![SSD1306 OLED Display](images/display.jpg)
+
+
 ### 1. **Installation**
-Clone this repository and include the library files in your project:
+- First, you must clone this repository to your personal local workspace.
 
 ```sh
 $ git clone https://github.com/your-username/ssd1306-library.git
 ```
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+- Now, you will have this entire repository downloaded but you will only need the "ssd1306" directory. So, after cloning the repository, paste the ssd1306 folder into your personal project and add these lines to your CMakeLists.txt, ensuring the addition of the executable files present in this library.
+  
+```c
+add_executable(ssd1306_Lib
+        main.c
+        ssd1306/ssd1306.c
+        ssd1306/ssd1306_fonts.c
+        )
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+- After that, just include the two files to use the functions and fonts present in the library.
+  
+```c
+#include "ssd1306/ssd1306.h"
+#include "ssd1306/ssd1306_fonts.h"
+```
+
 
 ### 2. **Hardware Setup**
 Connect the **SSD1306 OLED display** to the **Raspberry Pi Pico W** using **I2C**:
@@ -65,22 +89,29 @@ Connect the **SSD1306 OLED display** to the **Raspberry Pi Pico W** using **I2C*
 Here’s a simple example to initialize the display and show text:
 
 ```c
-#include "ssd1306.h"
+#include "ssd1306/ssd1306.h"
+#include "ssd1306/ssd1306_fonts.h"
 
 int main() {
-    ssd1306_Init();
-    ssd1306_SetCursor(10, 10);
-    ssd1306_WriteString("Hello, World!", Font_7x10, 1);
-    ssd1306_UpdateScreen();
+
+    stdio_init_all();           // Initialize all of the present standard stdio types that are linked into the binary.
+
+    ssd1306_Init();             // Initialize the display
+    ssd1306_Fill(Black);        // Fill the display with black color
+
+    ssd1306_DrawRectangle(0, 0, 127, 63, White);            // Draw a rectangle from (0, 0) to (127, 31) with white color
+    ssd1306_SetCursor(25, 28);                              // Set the cursor to the position (25, 28)
+    ssd1306_WriteString("Hello World", Font_7x10, White);   // Write the string "Hello World" to the display
+    ssd1306_UpdateScreen();                                 // Update the display
+
     while (1);
+    
+    return 0;
+}
 }
 ```
 
 ## Conclusion
 The **SSD1306 Library for Raspberry Pi Pico W** is a powerful tool for developers looking to integrate **OLED displays** into their projects. With functions for **initialization, display control, shape drawing, and text rendering**, the library simplifies development and enables the creation of **clean and interactive** user interfaces.
 
-For any questions or contributions, feel free to open an **issue** or submit a **pull request**!
-
 ---
-
-**Made with ❤️ for embedded developers!** 🚀
