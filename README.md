@@ -1,7 +1,7 @@
 # SSD1306 Library for Raspberry Pi Pico W
 
 ## Introduction
-This library is designed to simplify the use of the **SSD1306 OLED display** with the **Raspberry Pi Pico W**. The SSD1306 is a popular **monochrome OLED display**, widely used in electronics projects due to its high resolution and low power consumption. This library provides an easy-to-use interface for:
+This library is designed to simplify the use of the **SSD1306 OLED display** with the *Raspberry Pi Pico W*. The SSD1306 is a popular **monochrome OLED display**, widely used in electronics projects due to its high resolution and low power consumption. The code present in this library was written in C and the working environment used was **Visual Studio Code**, using the *Raspberry Pi Pico* extension present in the development tool. This library provides an easy-to-use interface for:
 - Display initialization
 - Drawing geometric shapes
 - Rendering text and graphics
