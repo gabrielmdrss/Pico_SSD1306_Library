@@ -8,7 +8,7 @@ This library is designed to simplify the use of the **SSD1306 OLED display** wit
 - Controlling display settings
 
 ## Purpose
-The primary goal of this library is to **streamline** the process of interfacing with the **SSD1306** using the **Raspberry Pi Pico W**. By using this library, developers can quickly integrate the display into their projects without handling low-level **I2C** or **SPI** communication.
+The primary goal of this library is to **streamline** the process of interfacing with the **SSD1306** using the **Raspberry Pi Pico W**. By using this library, developers can quickly integrate the display into their projects without handling low-level **I2C** communication.
 
 ## Features
 ### Initialization
