@@ -50,7 +50,7 @@ The primary goal of this library is to **streamline** the process of interfacing
 - First, you must clone this repository to your personal local workspace.
 
 ```sh
-$ git clone https://github.com/your-username/ssd1306-library.git
+$ git clone https://github.com/gabrielmdrss/Pico_SSD1306_Library.git
 ```
 
 &nbsp;&nbsp;&nbsp;&nbsp;
