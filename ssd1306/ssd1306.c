@@ -58,7 +58,7 @@ SSD1306_Error_t ssd1306_FillBuffer(uint8_t* buf, uint32_t len) {
 }
 
 /* Initialize the oled screen */
-void ssd1306_Init(uint8_t SDA_PIN, uint8_t SCL_PIN, spi_inst_t* ID) {
+void ssd1306_Init(uint8_t SDA_PIN, uint8_t SCL_PIN, i2c_inst_t* ID) {
     I2C_SCL_PIN = SDA_PIN;
     I2C_SCL_PIN = SCL_PIN;
     I2C_ID = ID;
