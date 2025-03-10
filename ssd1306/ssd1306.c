@@ -10,8 +10,9 @@
 
 #if defined(SSD1306_USE_I2C)
 
-const uint8_t I2C_SDA_PIN = 14;
-const uint8_t I2C_SCL_PIN = 15;
+static const uint8_t I2C_SDA_PIN;
+static const uint8_t I2C_SCL_PIN;
+static const uint8_t I2C_ID;
 
 void ssd1306_Reset(void) {
     /* for I2C - do nothing */
@@ -57,7 +58,11 @@ SSD1306_Error_t ssd1306_FillBuffer(uint8_t* buf, uint32_t len) {
 }
 
 /* Initialize the oled screen */
-void ssd1306_Init(void) {
+void ssd1306_Init(uint8_t SDA_PIN, uint8_t SCL_PIN, i2c_inst_t* ID) {
+    I2C_SCL_PIN = SDA_PIN;
+    I2C_SCL_PIN = SCL_PIN;
+    I2C_ID = ID;
+    
     // Reset OLED
     ssd1306_Reset();
 
@@ -66,7 +71,7 @@ void ssd1306_Init(void) {
 
     // I2C is "open drain", pull ups to keep signal high when no data is being
     // sent
-    i2c_init(i2c1, SSD1306_I2C_CLK * 1000);
+    i2c_init(I2C_ID, SSD1306_I2C_CLK * 1000);
     gpio_set_function(I2C_SDA_PIN, GPIO_FUNC_I2C);
     gpio_set_function(I2C_SCL_PIN, GPIO_FUNC_I2C);
     gpio_pull_up(I2C_SDA_PIN);

@@ -3,12 +3,16 @@
  #include "ssd1306/ssd1306_fonts.h"
  #include "pico/stdlib.h"
  #include "hardware/i2c.h"
+
+#define SDA_PIN 14
+#define SCL_PIN 15
+#define I2C_INSTANCE I2C1
  
 int main() {
 
     stdio_init_all();           // Initialize all of the present standard stdio types that are linked into the binary.
 
-    ssd1306_Init();             // Initialize the display
+    ssd1306_Init(SDA_PIN, SCL_PIN, I2C_INSTANCE);             // Initialize the display
     ssd1306_Fill(Black);        // Fill the display with black color
 
     ssd1306_DrawRectangle(0, 0, 127, 63, White);            // Draw a rectangle from (0, 0) to (127, 31) with white color
