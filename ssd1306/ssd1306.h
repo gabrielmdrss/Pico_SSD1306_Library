@@ -1,4 +1,4 @@
-#ifndef __SSD1306_H__
+	#ifndef __SSD1306_H__
 #define __SSD1306_H__
 
 #include <stddef.h>
@@ -20,10 +20,6 @@ _BEGIN_STD_C
 #endif
 
 /* vvv I2C config vvv */
-
-#ifndef SSD1306_I2C_PORT
-#define SSD1306_I2C_PORT        i2c1
-#endif
 
 #ifndef SSD1306_I2C_ADDR
 #define SSD1306_I2C_ADDR        0x3C
@@ -78,7 +74,7 @@ typedef struct {
 } SSD1306_Font_t;
 
 // Procedure definitions
-void ssd1306_Init(void);
+void ssd1306_Init(uint8_t SDA_PIN, uint8_t SCL_PIN, i2c_inst_t* ID);
 void ssd1306_Fill(SSD1306_COLOR color);
 void ssd1306_UpdateScreen(void);
 void ssd1306_DrawPixel(uint8_t x, uint8_t y, SSD1306_COLOR color);
